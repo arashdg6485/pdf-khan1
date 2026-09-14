@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: 17
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -29,5 +29,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: PriceFinderAI-APK
-          path: "**/app-debug.apk"
+          name: pdf-khan-apk
+          path: app/build/outputs/apk/debug/*.apk
