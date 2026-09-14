@@ -14,20 +14,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Java 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: 17
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      - name: Find project
+        run: |
+          ls -la
+          find . -name gradlew
 
       - name: Build APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: |
+          chmod +x $(find . -name gradlew | head -1)
+          $(find . -name gradlew | head -1) assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: PriceFinderAI-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: "**/app/build/outputs/apk/debug/*.apk"
