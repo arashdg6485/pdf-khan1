@@ -25,7 +25,7 @@ data class PdfItem(val uri: Uri, val name: String)
 data class PriceResult(
     val file: String, val page: Int, val code: String, val name: String,
     val description: String, val price: String, val score: Int, val context: String
-)
+
 
 class MainActivity : AppCompatActivity() {
     private val pdfs = mutableListOf<PdfItem>()
